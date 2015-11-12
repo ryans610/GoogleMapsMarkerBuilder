@@ -4,7 +4,7 @@ var GoogleMarkerBuilder=(function namespace(){
         config.contentBuilder=contentBuilder;
     }
     Init.prototype.setMarker=function(info){
-        var position=new google.maps.LatLng(info.geoLat,info.geoLng);
+        var position=new google.maps.LatLng(info.lat,info.lng);
         var marker=new google.maps.Marker({
             position: position,
             map: config.map,
