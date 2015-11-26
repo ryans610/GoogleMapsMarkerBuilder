@@ -61,6 +61,9 @@
                 tpcCoordinate: "",
                 lat: 25.020729,
                 lng: 121.528174,
+                color:"yellow",
+                //"blue","yellow","green","ltblue","orange","pink","purple","red"
+
             },
     	];
 
@@ -82,7 +85,7 @@
                 	className:"box",
                 }
     		);
-    		boxBuilder.setFixedBoxLatLng({
+    		boxBuilder.setFixedBoxLatLng({		//畫出固定區塊
     			lat: 25.018795,
                 lng: 121.529574
     		},{
@@ -100,7 +103,7 @@
 				tmp+="</table>";
 				return tmp;
     		});
-    		googleMarkerBuilder.setMarkers(markers);
+    		googleMarkerBuilder.setMarkers(markers);	//設定標記
         });
     </script>
 </head>

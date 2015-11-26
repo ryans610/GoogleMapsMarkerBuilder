@@ -5,9 +5,18 @@ var GoogleMarkerBuilder=(function namespace(){
     }
     Init.prototype.setMarker=function(info){
         var position=new google.maps.LatLng(info.lat,info.lng);
+        var markerColor=config.iconColor[0];
+        if(info.color!=undefined){
+            config.iconColor.map(function(color){
+                if(color==info.color){
+                    markerColor=color;
+                }
+            });
+        }
         var marker=new google.maps.Marker({
             position: position,
             map: config.map,
+            icon:"http://www.google.com/mapfiles/ms/micons/"+markerColor+"-dot.png",
         });
         info.marker=marker;
         var infoOfWindow=getInfoWindow(position,info,config.contentBuilder);
@@ -27,6 +36,19 @@ var GoogleMarkerBuilder=(function namespace(){
         temp.content=contentBuilder.call(this,info);
         return temp;
     }
-    var config={};
+    var config={
+        map:null,
+        contentBuilder:null,
+        iconColor:[
+            "blue",
+            "yellow",
+            "green",
+            "ltblue",
+            "orange",
+            "pink",
+            "purple",
+            "red"
+        ],
+    };
     return Init;
 }());
