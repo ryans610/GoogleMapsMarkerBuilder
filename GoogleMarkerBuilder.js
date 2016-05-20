@@ -30,6 +30,25 @@ var GoogleMarkerBuilder=(function namespace(){
             Init.prototype.setMarker(info);
         });
     }
+    Init.prototype.setLegend=function(legends){
+        console.log(legends);
+        if(!config.legend){
+            config.legend=document.createElement("div");
+            config.legend.className="marker-legend";
+            config.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(config.legend);
+        }else{
+            while(config.legend.lastChild){
+                config.legend.removeChild(config.legend.lastChild);
+            }
+        }
+        for(var i in legends){
+            var o=legends[i];
+            var div=document.createElement("div");
+            div.innerHTML='<img src="http://www.google.com/mapfiles/ms/micons/'+o.color+'-dot.png">';
+            div.innerHTML+='<span>'+o.name+'</span>';
+            config.legend.appendChild(div);
+        }
+    };
     function getInfoWindow(position,info,contentBuilder){
         var temp={};
         temp.position=position;
@@ -39,6 +58,7 @@ var GoogleMarkerBuilder=(function namespace(){
     var config={
         map:null,
         contentBuilder:null,
+        legend:null,
         iconColor:[
             "blue",
             "yellow",
