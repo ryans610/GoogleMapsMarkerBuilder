@@ -35,7 +35,11 @@
         .marker-info td{
             border: 1px solid black;
         }
-
+        .marker-legend{
+            padding: 5px;
+            border: 1px solid black;
+            background: white;
+        }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script src="BoxBuilder.js"></script>
@@ -76,7 +80,7 @@
     			}
     		);
 
-    		boxBuilder=new BoxBuilder(
+    		/*boxBuilder=new BoxBuilder(
     			document.getElementById('map-canvas'),	//Container
                 map,									//Google Map
                 {										//Options
@@ -91,7 +95,7 @@
     		},{
     			lat: 25.016436,
                 lng: 121.532723
-    		});
+    		});*/
 
     		googleMarkerBuilder=new GoogleMarkerBuilder(map,function (info){
 				var tmp="<table class='marker-info'>";
@@ -104,6 +108,20 @@
 				return tmp;
     		});
     		googleMarkerBuilder.setMarkers(markers);	//設定標記
+            googleMarkerBuilder.setLegend([
+                {
+                    color:"blue",
+                    name:"BLUE!!",
+                },
+                {
+                    color:"orange",
+                    name:"AELVKNDMS",
+                },
+                {
+                    color:"green",
+                    name:"134r56789",
+                },
+            ]);
         });
     </script>
 </head>
